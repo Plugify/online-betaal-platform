@@ -1,0 +1,12 @@
+version: "3"
+volumes:
+  bundle: { driver: local }
+  config: { driver: local }
+services:
+  app:
+    build: .
+    image: alpinelab/ruby-dev
+    volumes:
+      - .:/app
+      - bundle:/bundle
+      - config:/config
