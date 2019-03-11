@@ -17,6 +17,7 @@ GEM
       safe_yaml (~> 1.0.0)
     domain_name (0.5.20180417)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.1)
     dry-configurable (0.8.2)
       concurrent-ruby (~> 1.0)
       dry-core (~> 0.4, >= 0.4.7)
@@ -75,6 +76,7 @@ PLATFORMS
 DEPENDENCIES
   bundler (~> 1.17)
   byebug
+  dotenv
   minitest
   online_betaal_platform!
   rake (~> 10.0)
