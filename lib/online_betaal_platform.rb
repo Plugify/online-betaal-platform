@@ -1,10 +1,12 @@
+# Require needed gems & files
+
 require 'http'
 require 'oj'
 require 'dry-validation'
 
 require 'online_betaal_platform/configuration'
-# require "online_betaal_platform/version"
-require "online_betaal_platform/merchant"
+require 'online_betaal_platform/merchant'
+require 'online_betaal_platform/bank_account'
 
 module OnlineBetaalPlatform
   class << self

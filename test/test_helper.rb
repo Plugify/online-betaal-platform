@@ -7,7 +7,7 @@ require 'dotenv/load'
 require 'byebug'
 
 VCR.configure do |c|
-  c.cassette_library_dir = "test/fixtures"
+  c.cassette_library_dir = 'test/fixtures'
   c.hook_into :webmock
 end
 
@@ -15,6 +15,6 @@ end
 OnlineBetaalPlatform.configure do |config|
   config.live_mode = false
   config.api_user_key = ENV['API_USER_KEY']
-  config.merchant_notify_url = ENV['MERCHANT_NOTIFY_URL']
+  config.notify_url = ENV['MERCHANT_NOTIFY_URL']
+  config.bank_account_redirect_url = ENV['BANK_ACCOUNT_REDIRECT_URL']
 end
-

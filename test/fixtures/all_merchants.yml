@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api-sandbox.onlinebetaalplatform.nl/v1/merchants
+    body:
+      encoding: UTF-8
+      string: ''
+    headers:
+      Authorization:
+      - Basic REDACTED
+      Connection:
+      - close
+      Host:
+      - api-sandbox.onlinebetaalplatform.nl
+      User-Agent:
+      - http.rb/4.0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 12 Mar 2019 15:04:54 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Authorization,Accept-Encoding,User-Agent
+      Cache-Control:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '6680'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"object":"list","url":"\/v1\/merchants","has_more":true,"total_item_count":12,"items_per_page":10,"current_page":1,"last_page":2,"data":[{"uid":"mer_09c609a961db","object":"merchant","created":1551713009,"updated":1552399338,"status":"live","compliance":{"level":200,"status":"pending","requirements":[{"type":"bank_account.verification.required","status":"pending","object_uid":"bnk_2dc0825cea81","object_type":"bank_account","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_09c609a961db\/bank_accounts\/bnk_2dc0825cea81","object_redirect_url":"https:\/\/sandbox.onlinebetaalplatform.nl\/nl\/plugify\/merchants\/mer_09c609a961db\/verificatie\/bankgegevens\/bnk_2dc0825cea81\/410bb2c420ea20f4c4520aa5f3603e4384aaab7d"}]},"type":"open","coc_nr":"","name":"Plugify","phone":null,"vat_nr":null,"country":null,"sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":null},{"uid":"mer_11ed125e518d","object":"merchant","created":1551971127,"updated":1551972004,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Arty
+        Art","phone":null,"vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/dev.plugify.nl\/notify"},{"uid":"mer_d9c9aadd31e6","object":"merchant","created":1551973086,"updated":1551973804,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Arty
+        Art","phone":null,"vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/dev.plugify.nl\/notify"},{"uid":"mer_fb3c77254c2a","object":"merchant","created":1552061312,"updated":1552062003,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Bob
+        asd","phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/dev.asd.com"},{"uid":"mer_4e2603942346","object":"merchant","created":1552061744,"updated":1552062604,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Bob
+        Marley","phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"},{"uid":"mer_07603c5d9754","object":"merchant","created":1552302984,"updated":1552302984,"status":"pending","compliance":{"level":400,"status":"unverified","requirements":[{"type":"bank_account.required","status":"unverified","object_uid":null,"object_type":"bank_account","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_07603c5d9754\/bank_accounts","object_redirect_url":null},{"type":"contact.verification.required","status":"unverified","object_uid":"con_1fc9d456566a","object_type":"contact","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_07603c5d9754\/contacts\/con_1fc9d456566a","object_redirect_url":"https:\/\/sandbox.onlinebetaalplatform.nl\/nl\/plugify\/merchants\/mer_07603c5d9754\/verificatie\/contactgegevens\/con_1fc9d456566a\/d7265b3787319b97aadef81dd2e8e732af0ccf62"}]},"type":"business","coc_nr":"123123123","name":null,"phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"},{"uid":"mer_4aa3bd2d0f7c","object":"merchant","created":1552302985,"updated":1552303804,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Kymani
+        Marley","phone":"321321321","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"},{"uid":"mer_06a3811db61e","object":"merchant","created":1552319494,"updated":1552319494,"status":"pending","compliance":{"level":400,"status":"unverified","requirements":[{"type":"bank_account.required","status":"unverified","object_uid":null,"object_type":"bank_account","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_06a3811db61e\/bank_accounts","object_redirect_url":null},{"type":"contact.verification.required","status":"unverified","object_uid":"con_6dc952f00b0e","object_type":"contact","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_06a3811db61e\/contacts\/con_6dc952f00b0e","object_redirect_url":"https:\/\/sandbox.onlinebetaalplatform.nl\/nl\/plugify\/merchants\/mer_06a3811db61e\/verificatie\/contactgegevens\/con_6dc952f00b0e\/b5fb672d882469a05e357bdaf26081727ae176ef"}]},"type":"business","coc_nr":"123123123","name":null,"phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"},{"uid":"mer_53c2d96058a5","object":"merchant","created":1552319495,"updated":1552320603,"status":"live","compliance":{"level":100,"status":"verified","requirements":[]},"type":"consumer","coc_nr":null,"name":"Kymani
+        Marley","phone":"321321321","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"},{"uid":"mer_73fd894b40e5","object":"merchant","created":1552385823,"updated":1552385824,"status":"pending","compliance":{"level":400,"status":"unverified","requirements":[{"type":"bank_account.required","status":"unverified","object_uid":null,"object_type":"bank_account","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_73fd894b40e5\/bank_accounts","object_redirect_url":null},{"type":"contact.verification.required","status":"unverified","object_uid":"con_da8228a6a7cb","object_type":"contact","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_73fd894b40e5\/contacts\/con_da8228a6a7cb","object_redirect_url":"https:\/\/sandbox.onlinebetaalplatform.nl\/nl\/plugify\/merchants\/mer_73fd894b40e5\/verificatie\/contactgegevens\/con_da8228a6a7cb\/8611e31e67d1c02c440a365e86f054f2b37a9929"}]},"type":"business","coc_nr":"123123123","name":null,"phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/test.plugify.nl"}]}'
+    http_version: 
+  recorded_at: Tue, 12 Mar 2019 15:04:54 GMT
+recorded_with: VCR 4.0.0

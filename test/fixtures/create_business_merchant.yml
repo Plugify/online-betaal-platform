@@ -1,0 +1,52 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api-sandbox.onlinebetaalplatform.nl/v1/merchants
+    body:
+      encoding: UTF-8
+      string: emailaddress=bob1552403086%40marley.com&phone=123123123&type=business&country=nld&coc_nr=123123123&notify_url=https%3A%2F%2Fdev.plugify.nl%2Fmerchant_notify
+    headers:
+      Authorization:
+      - Basic REDACTED
+      Connection:
+      - close
+      Content-Type:
+      - application/x-www-form-urlencoded
+      Host:
+      - api-sandbox.onlinebetaalplatform.nl
+      User-Agent:
+      - http.rb/4.0.5
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Tue, 12 Mar 2019 15:04:51 GMT
+      Server:
+      - Apache
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubDomains
+      Vary:
+      - Authorization,Accept-Encoding,User-Agent
+      Cache-Control:
+      - no-cache
+      X-Xss-Protection:
+      - 1; mode=block
+      Content-Length:
+      - '1122'
+      Connection:
+      - close
+      Content-Type:
+      - application/json
+    body:
+      encoding: ASCII-8BIT
+      string: '{"livemode":false,"uid":"mer_a8c39a0a3710","object":"merchant","created":1552403091,"updated":1552403091,"status":"pending","compliance":{"level":400,"status":"unverified","requirements":[{"type":"bank_account.required","status":"unverified","object_uid":null,"object_type":"bank_account","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_a8c39a0a3710\/bank_accounts","object_redirect_url":null},{"type":"contact.verification.required","status":"unverified","object_uid":"con_927e82d517fe","object_type":"contact","object_url":"https:\/\/api-sandbox.onlinebetaalplatform.nl\/v1\/merchants\/mer_a8c39a0a3710\/contacts\/con_927e82d517fe","object_redirect_url":"https:\/\/sandbox.onlinebetaalplatform.nl\/nl\/plugify\/merchants\/mer_a8c39a0a3710\/verificatie\/contactgegevens\/con_927e82d517fe\/fcace855536d4e82b60280ae70f5b23ccf0ef3e0"}]},"type":"business","coc_nr":"123123123","name":null,"phone":"123123123","vat_nr":null,"country":"nld","sector":null,"addresses":[],"trading_names":[],"contacts":[],"profiles":[],"payment_methods":[],"notify_url":"https:\/\/dev.plugify.nl\/merchant_notify"}'
+    http_version: 
+  recorded_at: Tue, 12 Mar 2019 15:04:51 GMT
+recorded_with: VCR 4.0.0
