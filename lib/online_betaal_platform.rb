@@ -2,7 +2,6 @@
 
 require 'http'
 require 'oj'
-require 'dry-validation'
 
 require 'online_betaal_platform/configuration'
 require 'online_betaal_platform/merchant'
