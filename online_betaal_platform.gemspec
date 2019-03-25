@@ -1,6 +1,4 @@
-lib = File.expand_path('../lib', __dir__)
-$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'online_betaal_platform/version'
+require File.expand_path('../lib/online_betaal_platform/version', __FILE__)
 
 Gem::Specification.new do |spec|
   spec.name          = 'online_betaal_platform'
