@@ -1,8 +1,6 @@
 # OnlineBetaalPlatform
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/online_betaal_platform`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem
+Wrapper gem for [Online Betaal Platform API](https://onlinebetaalplatform.nl/nl/public/developer/api) 
 
 ## Installation
 
@@ -22,7 +20,52 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+Add the config block to your rails app:
+
+```ruby
+# config/initializers/online_betaal_platform.rb
+OnlineBetaalPlatform.configure do |config|
+  config.live_mode = false
+  config.api_user_key = ENV['API_USER_KEY']
+  config.notify_url = ENV['MERCHANT_NOTIFY_URL']
+  config.bank_account_redirect_url = ENV['BANK_ACCOUNT_REDIRECT_URL']
+end
+```
+
+## API reference
+
+### Merchants:
+
+Get all merchants:
+
+```ruby
+OnlineBetaalPlatform::Merchant.all
+```
+Find a merchant:
+```ruby
+OnlineBetaalPlatform::Merchant.find(uuid) 
+```
+Create a merchant:
+
+```ruby
+attributes =
+ {
+    emailaddress: "bob@marley.com",
+    phone: '123123123',
+    type: 'business',
+    country: 'nld',
+    coc_nr: '123123123'
+ }
+ 
+ OnlineBetaalPlatform::Merchant.create(attributes)
+```
+### Bank Accounts:
+Bank accounts are linked to merchants:
+
+```ruby
+merchant = OnlineBetaalPlatform::Merchant.find('uuid')
+bank_accounts = merchant.bank_accounts
+```
 
 ## Development
 
@@ -32,7 +75,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/online_betaal_platform. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/plugify/online_betaal_platform. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 ## License
 
