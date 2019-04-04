@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = 'API Wrapper for Online Betaal Platform'
   spec.description   = 'API Wrapper for Online Betaal Platform'
-  spec.homepage      = 'https://github.com/plugify/online_betaal_platform'
+  spec.homepage      = 'https://github.com/plugify/online-betaal-platform'
   spec.license       = 'MIT'
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
@@ -17,8 +17,8 @@ Gem::Specification.new do |spec|
     spec.metadata['allowed_push_host'] = "TODO: Set to 'http://mygemserver.com'"
 
     spec.metadata['homepage_uri'] = spec.homepage
-    spec.metadata['source_code_uri'] = 'https://github.com/plugify/online_betaal_platform'
-    spec.metadata['changelog_uri'] = 'https://github.com/plugify/online_betaal_platform'
+    spec.metadata['source_code_uri'] = 'https://github.com/plugify/online-betaal-platform'
+    spec.metadata['changelog_uri'] = 'https://github.com/plugify/online-betaal-platform'
   else
     raise 'RubyGems 2.0 or newer is required to protect against ' \
       'public gem pushes.'
