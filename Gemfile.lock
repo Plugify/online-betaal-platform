@@ -2,8 +2,9 @@ PATH
   remote: .
   specs:
     online_betaal_platform (0.1.0)
-      http
-      oj
+      http (~> 4.1)
+      oj (~> 3.7)
+      rack
 
 GEM
   remote: https://rubygems.org/
@@ -29,6 +30,7 @@ GEM
     minitest (5.11.3)
     oj (3.7.11)
     public_suffix (3.0.3)
+    rack (2.0.6)
     rake (10.5.0)
     safe_yaml (1.0.5)
     unf (0.1.4)
@@ -45,13 +47,13 @@ PLATFORMS
 
 DEPENDENCIES
   bundler (~> 1.17)
-  byebug
-  dotenv
-  minitest
+  byebug (~> 11.0)
+  dotenv (~> 2.7)
+  minitest (~> 5.11)
   online_betaal_platform!
   rake (~> 10.0)
-  vcr
-  webmock
+  vcr (~> 4.0)
+  webmock (~> 3.5)
 
 BUNDLED WITH
    1.17.3
