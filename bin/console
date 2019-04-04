@@ -6,6 +6,44 @@ require "online_betaal_platform"
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
+OnlineBetaalPlatform.configure do |config|
+  config.live_mode = false
+  config.api_user_key = 'e1e675da88b97319ec1c5bb35b6bc50f'
+  config.notify_url = 'https://dev.plugify.nl/merchant_notify'
+  config.bank_account_redirect_url = 'https://dev.plugify.nl/bank_redirect'
+end
+
+merchant_trx_attrs =  {:merchant_uid=>"mer_73fd894b40e5", :shipping_costs=>0, :partner_fee=>20000, 'total_price': 10000, products: []}.transform_keys(&:to_s)
+
+MTRX =  {:checkout=>false, :total_price=>1000, :return_url=>"https://dev.com/return", :notify_url=>"https://return.com/notify", :meta_data=>{'quotation_id'=>1555}, :transactions=>[merchant_trx_attrs]}.transform_keys(&:to_s)
+
+
+MMM = {
+  "checkout" => "false",
+  "metadata[external_id]" => "2015486",
+  "notify_url" => "https://developer.dev/notify/",
+  "payment_method" => "ideal",
+  "return_url" => "https://developer.dev/return/",
+  "transactions" => [
+    {
+      "merchant_uid" => "mer_73fd894b40e5",
+      "partner_fee" => "100",
+      "shipping_costs" => "0",
+      "products" => [
+        {
+          "name" => "Product",
+          "price" => "1500",
+          "quantity" => "1"
+        },{
+          "name" => "Product",
+          "price" => "500",
+          "quantity" => "1",
+        }
+      ]
+    }
+  ]
+}
+
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
 # Pry.start
