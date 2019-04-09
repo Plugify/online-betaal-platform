@@ -18,11 +18,6 @@ module OnlineBetaalPlatform
       @api_root_url = "https://api#{self.live_mode ? '' : '-sandbox'}.onlinebetaalplatform.nl/v1"
     end
 
-
-    def http_auth
-      @http_auth = HTTP.basic_auth(user: self.api_user_key, pass: '')
-    end
-
     def api_user_key
       raise "Online Betaal Platform api user_key is missing!" unless @api_user_key
       @api_user_key

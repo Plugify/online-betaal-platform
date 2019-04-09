@@ -6,6 +6,49 @@ require "online_betaal_platform"
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
+OnlineBetaalPlatform.configure do |config|
+  config.live_mode = false
+  config.api_user_key = 'e1e675da88b97319ec1c5bb35b6bc50f'
+  config.notify_url = 'https://dev.plugify.nl/merchant_notify'
+  config.bank_account_redirect_url = 'https://dev.plugify.nl/bank_redirect'
+end
+
+MerchantAttrs = {
+  emailaddress: "bob#{Time.now.to_i}@marley.com",
+  phone: '123123123',
+  type: 'business',
+  country: 'nld',
+  coc_nr: '123123123'
+}.transform_keys(&:to_s)
+
+MutliTransactionsAttrs = {
+  "checkout" => "false",
+  "metadata" => {"external_id" =>"2015486"},
+  "payment_method" => "ideal",
+  "return_url" => "https://developer.dev/return/",
+  "total_price" => '2000',
+  "transactions" => {
+    "0" => {
+              "merchant_uid" => "mer_73fd894b40e5",
+              "partner_fee" => "100",
+              "shipping_costs" => "0",
+              "total_price" => '2000',
+              "products" => {
+                "0" => {
+                          "name" => "Product",
+                          "price" => "1500",
+                          "quantity" => "1"
+                       },
+                "1" => {
+                          "name" => "Product",
+                          "price" => "500",
+                          "quantity" => "1",
+                        }
+              }
+            }
+  },
+}
+
 # (If you use this, don't forget to add pry to your Gemfile!)
 # require "pry"
 # Pry.start

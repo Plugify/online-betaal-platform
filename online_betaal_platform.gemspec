@@ -37,9 +37,8 @@ Gem::Specification.new do |spec|
   spec.files         = Dir['CODE_OF_CONDUCT.md', 'LICENSE.txt', 'README.md', 'lib/**/*.rb']
   spec.test_files    = Dir['test/**/*.rb']
 
-  spec.add_dependency 'http', '~> 4.1'
   spec.add_dependency 'oj', '~> 3.7'
-  spec.add_dependency 'rack'
+  spec.add_dependency 'rack', '~> 2.0.6'
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'byebug', '~> 11.0'
@@ -48,4 +47,6 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'rake', '~> 10.0'
   spec.add_development_dependency 'vcr', '~> 4.0'
   spec.add_development_dependency 'webmock', '~> 3.5'
+  spec.add_development_dependency 'rubocop', '~> 0.67.2'
+  spec.add_development_dependency 'rubocop-performance'
 end

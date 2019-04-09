@@ -7,11 +7,7 @@ module OnlineBetaalPlatform
                 :profiles, :payment_methods
 
     def self.api_url
-      OnlineBetaalPlatform.configuration.api_root_url + '/merchants'
-    end
-
-    def self.http_auth
-      OnlineBetaalPlatform.configuration.http_auth
+      'merchants'
     end
 
     def self.notify_url
@@ -46,37 +42,30 @@ module OnlineBetaalPlatform
     end
 
     def self.find(uid)
-      response = http_auth.get("#{api_url}/#{uid}")
-      attributes = Oj.load(response.body)
-      new(attributes)
+      merchant = Request.get("#{api_url}/#{uid}")
+
+      new(merchant)
     end
 
     def self.all
       # TODO: Handle pagination
-      response = http_auth.get(api_url)
-      merchants = Oj.load(response.body)['data']
+      merchants = Request.get(api_url)['data']
       merchants.map { |attributes| new(attributes) }
     end
 
     def self.create(attributes)
       attributes[:notify_url] = notify_url
-      response = http_auth.post(api_url, form: attributes)
-
-      # Raise any API errors
-      raise response.parse.to_s if response.code != 200
+      merchant = Request.post(api_url, attributes)
 
       # Return the created merchant
-      new(Oj.load(response))
+      new(merchant)
     end
 
     def bank_accounts
       # GET Request to /merchants/:merchant_uid/bank_accounts
-      response = OnlineBetaalPlatform::Merchant.http_auth.get(
-        OnlineBetaalPlatform::Merchant.api_url + '/' + uid + '/bank_accounts'
-      )
-
-      bank_accounts = Oj.load(response.body)['data']
-
+      bank_accounts = Request.get(
+        "#{OnlineBetaalPlatform::Merchant.api_url}/#{uid}/bank_accounts"
+      )['data']
       return [] if bank_accounts.empty?
 
       bank_accounts.map do |attributes|
@@ -84,18 +73,18 @@ module OnlineBetaalPlatform
       end
     end
 
-    def new_bank_account
+    def new_bank_account_link
       form = {
         notify_url: OnlineBetaalPlatform::Merchant.notify_url,
         return_url: OnlineBetaalPlatform::Merchant.bank_account_redirect_url
       }
 
-      response = OnlineBetaalPlatform::Merchant.http_auth.post(
+      bank_account_link = Request.post(
         OnlineBetaalPlatform::Merchant.api_url + '/' + uid + '/bank_accounts',
-        form: form
+        form
       )
 
-      OnlineBetaalPlatform::BankAccount.new(Oj.load(response.body))
+      OnlineBetaalPlatform::BankAccount.new(bank_account_link)
     end
   end
 end
