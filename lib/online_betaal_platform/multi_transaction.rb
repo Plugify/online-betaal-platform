@@ -8,11 +8,7 @@ module OnlineBetaalPlatform
       :redirect_url, :notify_url, :status, :metadata, :statuses, :transactions
 
     def self.api_url
-      OnlineBetaalPlatform.configuration.api_root_url + '/multi_transactions'
-    end
-
-    def self.http_auth
-      OnlineBetaalPlatform.configuration.http_auth
+      'multi_transactions'
     end
 
     def self.notify_url
@@ -43,24 +39,17 @@ module OnlineBetaalPlatform
     end
 
     def self.create(attributes)
-
-      byebug
       attributes[:notify_url] = notify_url
-      Rack::Utils.parse_nested_query(params)
-      response = http_auth.post(api_url, body: URI.encode_www_form(attributes))
-
-      # Raise any API errors
-      raise response.parse.to_s if response.code != 200
+      multi_transcation = Request.post(api_url, attributes)
 
       # Return the created merchant
-      new(Oj.load(response))
+      new(multi_transcation)
     end
 
     def self.all
       # TODO: Handle pagination
-      response = http_auth.get(api_url)
-      multi_transcations = Oj.load(response.body)['data']
-      multi_transcations.map { |attributes| new(attributes) }
+      multi_transactions = Request.get(api_url)['data']
+      multi_transactions.map { |attributes| new(attributes) }
     end
 
   end

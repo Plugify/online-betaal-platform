@@ -1,9 +1,8 @@
 # Require needed gems & files
-
-require 'http'
 require 'oj'
 
 require 'online_betaal_platform/configuration'
+require 'online_betaal_platform/request'
 require 'online_betaal_platform/merchant'
 require 'online_betaal_platform/bank_account'
 require 'online_betaal_platform/multi_transaction'
