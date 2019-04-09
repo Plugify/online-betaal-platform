@@ -13,35 +13,40 @@ OnlineBetaalPlatform.configure do |config|
   config.bank_account_redirect_url = 'https://dev.plugify.nl/bank_redirect'
 end
 
-merchant_trx_attrs =  {:merchant_uid=>"mer_73fd894b40e5", :shipping_costs=>0, :partner_fee=>20000, 'total_price': 10000, products: []}.transform_keys(&:to_s)
+MerchantAttrs = {
+  emailaddress: "bob#{Time.now.to_i}@marley.com",
+  phone: '123123123',
+  type: 'business',
+  country: 'nld',
+  coc_nr: '123123123'
+}.transform_keys(&:to_s)
 
-MTRX =  {:checkout=>false, :total_price=>1000, :return_url=>"https://dev.com/return", :notify_url=>"https://return.com/notify", :meta_data=>{'quotation_id'=>1555}, :transactions=>[merchant_trx_attrs]}.transform_keys(&:to_s)
-
-
-MMM = {
+MutliTransactionsAttrs = {
   "checkout" => "false",
-  "metadata[external_id]" => "2015486",
-  "notify_url" => "https://developer.dev/notify/",
+  "metadata" => {"external_id" =>"2015486"},
   "payment_method" => "ideal",
   "return_url" => "https://developer.dev/return/",
-  "transactions" => [
-    {
-      "merchant_uid" => "mer_73fd894b40e5",
-      "partner_fee" => "100",
-      "shipping_costs" => "0",
-      "products" => [
-        {
-          "name" => "Product",
-          "price" => "1500",
-          "quantity" => "1"
-        },{
-          "name" => "Product",
-          "price" => "500",
-          "quantity" => "1",
-        }
-      ]
-    }
-  ]
+  "total_price" => '2000',
+  "transactions" => {
+    "0" => {
+              "merchant_uid" => "mer_73fd894b40e5",
+              "partner_fee" => "100",
+              "shipping_costs" => "0",
+              "total_price" => '2000',
+              "products" => {
+                "0" => {
+                          "name" => "Product",
+                          "price" => "1500",
+                          "quantity" => "1"
+                       },
+                "1" => {
+                          "name" => "Product",
+                          "price" => "500",
+                          "quantity" => "1",
+                        }
+              }
+            }
+  },
 }
 
 # (If you use this, don't forget to add pry to your Gemfile!)
