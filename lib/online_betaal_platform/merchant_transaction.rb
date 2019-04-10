@@ -31,7 +31,7 @@ module OnlineBetaalPlatform
       @partner_fee     = attributes['partner_fee']
       @merchant_profile_uid = attributes['merchant_profile_uid']
 
-      @products = attributes['products'].map do |attrs|
+      @products = attributes.fetch(products, []).map do |attrs|
         OnlineBetaalPlatform::Product.new(attrs)
       end
 

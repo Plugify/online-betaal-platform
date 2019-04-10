@@ -32,9 +32,9 @@ module OnlineBetaalPlatform
       @status          = attributes['status']
       @metadata        = attributes['metadata']
       @statuses        = attributes['statuses']
-      @transactions    = attributes['transactions'].map do |attrs|
+      @transactions    = attributes.fetch('transactions', []).map do |attrs|
         OnlineBetaalPlatform::MerchantTransaction.new(attrs)
-      end rescue []
+      end
       @total_price = @transactions.map{ |tr| tr.total_price.to_i }.sum || 0
     end
 
@@ -51,6 +51,13 @@ module OnlineBetaalPlatform
       multi_transactions = Request.get(api_url)['data']
       multi_transactions.map { |attributes| new(attributes) }
     end
+
+    def self.find(uid)
+      multi_transaction = Request.get("#{api_url}/#{uid}")
+
+      new(multi_transaction)
+    end
+
 
   end
 end
