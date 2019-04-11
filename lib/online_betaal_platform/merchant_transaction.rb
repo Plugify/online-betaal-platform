@@ -7,6 +7,11 @@ module OnlineBetaalPlatform
       :escrow, :merchant_profile_uid, :total_price, :shipping_costs, :products,
       :partner_fee
 
+    def self.api_url
+      "transactions"
+    end
+
+
     def initialize(attributes)
       @uid             = attributes['uid']
       @object          = attributes['object']
@@ -36,6 +41,25 @@ module OnlineBetaalPlatform
       end
 
       @total_price = @products.map { |p| p.price.to_i }.sum || 0
+    end
+
+    def self.find(uid)
+      merchant_transaction = Request.get(
+        "#{api_url}/#{uid}"
+      )
+      new(merchant_transaction)
+    end
+
+    def update_escrow(escrow_date)
+      merchant_transaction = Request.post(MerchantTransaction.api_url, {escrow_date: escrow_date})
+      new(multi_transcation)
+    end
+
+    def refund!(amount = amount, message = 'Transaction Refunded')
+      Request.post(MerchantTransaction.api_url + '/refunds', {
+        amount: amount,
+        message: message
+      })
     end
   end
 end

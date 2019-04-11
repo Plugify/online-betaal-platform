@@ -5,7 +5,6 @@ module OnlineBetaalPlatform
                 :compliance, :type, :coc_nr, :name, :phone, :vat_nr, :country,
                 :sector, :notify_url, :addresses, :trading_names, :contacts,
                 :profiles, :payment_methods
-
     def self.api_url
       'merchants'
     end
