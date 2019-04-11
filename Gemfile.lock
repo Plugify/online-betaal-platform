@@ -56,8 +56,8 @@ DEPENDENCIES
   minitest (~> 5.11)
   online_betaal_platform!
   rake (~> 10.0)
-  rubocop (~> 0.67.2)
-  rubocop-performance
+  rubocop (~> 0.67)
+  rubocop-performance (~> 1.1)
   vcr (~> 4.0)
   webmock (~> 3.5)
 
