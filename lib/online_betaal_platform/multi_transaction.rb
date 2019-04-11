@@ -5,7 +5,8 @@ module OnlineBetaalPlatform
   class MultiTransaction
     attr_reader :uid, :object, :created, :updated, :completed, :checkout,
       :payment_method, :payment_flow, :payment_details, :amount, :return_url,
-      :redirect_url, :notify_url, :status, :metadata, :statuses, :transactions
+      :redirect_url, :notify_url, :status, :metadata, :statuses,
+      :merchant_transactions
 
     def self.api_url
       'multi_transactions'
@@ -32,10 +33,10 @@ module OnlineBetaalPlatform
       @status          = attributes['status']
       @metadata        = attributes['metadata']
       @statuses        = attributes['statuses']
-      @transactions    = attributes.fetch('transactions', []).map do |attrs|
+      @merchant_transactions = attributes.fetch('transactions', []).map do |attrs|
         OnlineBetaalPlatform::MerchantTransaction.new(attrs)
       end
-      @total_price = @transactions.map{ |tr| tr.total_price.to_i }.sum || 0
+      @total_price = @merchant_transactions.map{ |tr| tr.total_price.to_i }.sum || 0
     end
 
     def self.create(attributes)
@@ -54,10 +55,14 @@ module OnlineBetaalPlatform
 
     def self.find(uid)
       multi_transaction = Request.get("#{api_url}/#{uid}")
-
       new(multi_transaction)
     end
 
-
+    def find_merchant_tansaction(merchant_transaction_uid)
+      merchant_transaction = Request.get(
+        "#{MultiTransaction.api_url}/#{uid}/transactions/#{merchant_transaction_uid}"
+      )
+      MerchantTransaction.new(merchant_transaction)
+    end
   end
 end
