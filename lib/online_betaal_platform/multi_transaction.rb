@@ -58,6 +58,10 @@ module OnlineBetaalPlatform
       new(multi_transaction)
     end
 
+    def reload
+      OnlineBetaalPlatform::MultiTransaction.find(uid)
+    end
+
     def find_merchant_tansaction(merchant_transaction_uid)
       merchant_transaction = Request.get(
         "#{MultiTransaction.api_url}/#{uid}/transactions/#{merchant_transaction_uid}"

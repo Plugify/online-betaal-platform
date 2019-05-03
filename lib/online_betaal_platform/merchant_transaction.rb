@@ -41,6 +41,12 @@ module OnlineBetaalPlatform
       end
 
       @total_price = @products.map { |p| p.price.to_i }.sum || 0
+
+      @merchant = if @merchant_uid.present?
+                    OnlineBetaalPlatform::Merchant.find(@merchant_uid)
+                  else
+                    nil
+                  end
     end
 
     def self.find(uid)
@@ -55,7 +61,7 @@ module OnlineBetaalPlatform
       new(multi_transcation)
     end
 
-    def refund!(amount = amount, message = 'Transaction Refunded')
+    def refund!(amount = self.amount, message = 'Transaction Refunded')
       Request.post(MerchantTransaction.api_url + '/refunds', {
         amount: amount,
         message: message

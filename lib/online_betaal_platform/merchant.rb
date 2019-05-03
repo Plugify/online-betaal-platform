@@ -52,6 +52,14 @@ module OnlineBetaalPlatform
       merchants.map { |attributes| new(attributes) }
     end
 
+    def self.last
+      self.all.last
+    end
+
+    def self.first
+      self.all.first
+    end
+
     def self.create(attributes)
       attributes[:notify_url] = notify_url
       merchant = Request.post(api_url, attributes)
