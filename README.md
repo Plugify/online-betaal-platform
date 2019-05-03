@@ -1,5 +1,10 @@
 # OnlineBetaalPlatform
 
+<Warning>
+*This is still a work in progress, not production ready yet.*
+</Warning>
+
+
 Wrapper gem for [Online Betaal Platform API](https://onlinebetaalplatform.nl/nl/public/developer/api) 
 
 ## Installation
