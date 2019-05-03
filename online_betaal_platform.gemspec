@@ -38,7 +38,7 @@ Gem::Specification.new do |spec|
   spec.test_files    = Dir['test/**/*.rb']
 
   spec.add_dependency 'oj', '~> 3.7'
-  spec.add_dependency 'rack', '~> 2.0.6'
+  spec.add_dependency 'rack', '~> 2.0'
 
   spec.add_development_dependency 'bundler', '~> 1.17'
   spec.add_development_dependency 'byebug', '~> 11.0'

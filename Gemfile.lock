@@ -3,7 +3,7 @@ PATH
   specs:
     online_betaal_platform (0.1.0)
       oj (~> 3.7)
-      rack (~> 2.0.6)
+      rack (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
