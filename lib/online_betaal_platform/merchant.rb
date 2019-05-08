@@ -80,6 +80,10 @@ module OnlineBetaalPlatform
       end
     end
 
+    def default_bank_account
+      bank_accounts.select(&:is_default)&.first
+    end
+
     def new_bank_account_link
       form = {
         notify_url: OnlineBetaalPlatform::Merchant.notify_url,
