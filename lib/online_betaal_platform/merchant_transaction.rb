@@ -4,7 +4,7 @@ module OnlineBetaalPlatform
     attr_reader :uid, :object, :created, :updated, :completed, :checkout,
       :payment_method, :payment_flow, :payment_details, :amount, :return_url,
       :redirect_url, :notify_url, :status, :metadata, :statuses, :merchant_uid,
-      :escrow, :merchant_profile_uid, :total_price, :shipping_costs, :products,
+      :escrow, :escrow_date, :merchant_profile_uid, :total_price, :shipping_costs, :products,
       :partner_fee
 
     def self.api_url
@@ -32,6 +32,7 @@ module OnlineBetaalPlatform
       @statuses        = attributes['statuses']
       @order           = attributes['orders']
       @escrow          = attributes['escrow']
+      @escrow_date     = attributes['escrow_date']
       @shipping_costs  = attributes['shipping_costs']
       @partner_fee     = attributes['partner_fee']
       @merchant_profile_uid = attributes['merchant_profile_uid']
@@ -42,7 +43,7 @@ module OnlineBetaalPlatform
 
       @total_price = @products.map { |p| p.price.to_i }.sum || 0
 
-      @merchant = if @merchant_uid.present?
+      @merchant = unless @merchant_uid.empty?
                     OnlineBetaalPlatform::Merchant.find(@merchant_uid)
                   else
                     nil
