@@ -1,5 +1,3 @@
-require 'byebug'
-require 'rack'
 module OnlineBetaalPlatform
   # Multi Transaction
   class MultiTransaction
