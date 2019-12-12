@@ -5,7 +5,7 @@ module OnlineBetaalPlatform
   # API Request
   class Request
     def self.post(endpoint, data)
-      uri = URI.parse("https://api-sandbox.onlinebetaalplatform.nl/v1/" + endpoint)
+      uri = URI.parse(OnlineBetaalPlatform.configuration.api_root_url + endpoint)
       request = Net::HTTP::Post.new(uri)
       request.basic_auth(OnlineBetaalPlatform.configuration.api_user_key, "")
       request.body = Rack::Utils.build_nested_query(data)
@@ -26,7 +26,7 @@ module OnlineBetaalPlatform
     end
 
     def self.get(endpoint)
-      uri = URI.parse("https://api-sandbox.onlinebetaalplatform.nl/v1/" + endpoint)
+      uri = URI.parse(OnlineBetaalPlatform.configuration.api_root_url + endpoint)
       request = Net::HTTP::Get.new(uri)
       request.basic_auth(OnlineBetaalPlatform.configuration.api_user_key, "")
 
