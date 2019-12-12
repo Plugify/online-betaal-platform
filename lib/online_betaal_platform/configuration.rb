@@ -15,7 +15,8 @@ module OnlineBetaalPlatform
     end
 
     def api_root_url
-      @api_root_url = "https://api#{self.live_mode ? '' : '-sandbox'}.onlinebetaalplatform.nl/v1"
+      @api_root_url = "https://api#{self.live_mode ? '' : '-sandbox'}.onlinebetaalplatform.nl/v1/"
+      @api_root_url
     end
 
     def api_user_key
