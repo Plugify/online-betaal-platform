@@ -8,6 +8,7 @@ require 'online_betaal_platform/bank_account'
 require 'online_betaal_platform/multi_transaction'
 require 'online_betaal_platform/merchant_transaction'
 require 'online_betaal_platform/product'
+require 'online_betaal_platform/ideal_issuer'
 
 module OnlineBetaalPlatform
   class << self
