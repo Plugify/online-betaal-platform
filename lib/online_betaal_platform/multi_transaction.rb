@@ -3,7 +3,7 @@ module OnlineBetaalPlatform
   class MultiTransaction
     attr_reader :uid, :object, :created, :updated, :completed, :checkout,
       :payment_method, :payment_flow, :payment_details, :amount, :return_url,
-      :redirect_url, :notify_url, :status, :metadata, :statuses,
+      :redirect_url, :notify_url, :status, :metadata, :statuses, :issuer,
       :merchant_transactions
 
     def self.api_url
@@ -22,6 +22,7 @@ module OnlineBetaalPlatform
       @completed       = attributes['completed']
       @checkout        = attributes['checkout']
       @payment_method  = attributes['payment_method']
+      @issuer          = attributes['issuer']
       @payment_flow    = attributes['payment_flow']
       @payment_details = attributes['payment_details']
       @amount          = attributes['amount']
