@@ -97,5 +97,19 @@ module OnlineBetaalPlatform
 
       OnlineBetaalPlatform::BankAccount.new(bank_account_link)
     end
+
+    def migrate_to_business_merchant(coc_nr, country = 'NLD')
+      raise "Can't migrate business account" if type == 'business'
+      form = {
+        notify_url: OnlineBetaalPlatform::Merchant.notify_url,
+        coc_nr: coc_nr,
+        country: country
+      }
+      response = Request.post(
+        OnlineBetaalPlatform::Merchant.api_url + '/' + uid + '/migrate',
+        form
+      )
+      response
+    end
   end
 end

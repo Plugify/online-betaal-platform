@@ -1,5 +1,6 @@
 require 'net/http'
 require 'uri'
+require 'rack'
 
 module OnlineBetaalPlatform
   # API Request
