@@ -46,9 +46,9 @@ module OnlineBetaalPlatform
       new(multi_transcation)
     end
 
-    def self.all
+    def self.all(page = 1, per_page = 10)
       # TODO: Handle pagination
-      multi_transactions = Request.get(api_url)['data']
+      multi_transactions = Request.get(api_url, page, per_page)['data']
       multi_transactions.map { |attributes| new(attributes) }
     end
 
