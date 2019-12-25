@@ -63,7 +63,7 @@ module OnlineBetaalPlatform
     end
 
     def refund!(amount = self.amount, message = 'Transaction Refunded')
-      Request.post(MerchantTransaction.api_url + '/refunds', {
+      Request.post(MerchantTransaction.api_url + "/#{uid}" + '/refunds', {
         amount: amount,
         message: message
       })
