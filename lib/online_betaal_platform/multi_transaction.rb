@@ -4,7 +4,7 @@ module OnlineBetaalPlatform
     attr_reader :uid, :object, :created, :updated, :completed, :checkout,
       :payment_method, :payment_flow, :payment_details, :amount, :return_url,
       :redirect_url, :notify_url, :status, :metadata, :statuses, :issuer,
-      :merchant_transactions
+      :merchant_transactions, :date_expired
 
     def self.api_url
       'multi_transactions'
@@ -32,6 +32,7 @@ module OnlineBetaalPlatform
       @status          = attributes['status']
       @metadata        = attributes['metadata']
       @statuses        = attributes['statuses']
+      @date_expired    = attributes['date_expired']
       @merchant_transactions = attributes.fetch('transactions', []).map do |attrs|
         OnlineBetaalPlatform::MerchantTransaction.new(attrs)
       end
