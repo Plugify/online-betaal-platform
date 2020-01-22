@@ -26,9 +26,13 @@ module OnlineBetaalPlatform
       Oj.load(response.body)
     end
 
-    def self.get(endpoint, page = 1, per_page = 10)
+    def self.get(endpoint, page = 1, per_page = 10, status = nil)
       uri = URI.parse(OnlineBetaalPlatform.configuration.api_root_url + endpoint)
-      uri.query = URI.encode_www_form(perpage: per_page, page: page)
+      if status.present?
+        uri.query = URI.encode_www_form(perpage: per_page, page: page, 'filter[status]': status)
+      else
+        uri.query = URI.encode_www_form(perpage: per_page, page: page)
+      end
       request = Net::HTTP::Get.new(uri)
       request.basic_auth(OnlineBetaalPlatform.configuration.api_user_key, "")
 
