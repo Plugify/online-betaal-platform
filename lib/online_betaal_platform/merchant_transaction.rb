@@ -4,13 +4,16 @@ module OnlineBetaalPlatform
     attr_reader :uid, :object, :created, :updated, :completed, :checkout,
       :payment_method, :payment_flow, :payment_details, :amount, :return_url,
       :redirect_url, :notify_url, :status, :metadata, :statuses, :merchant_uid,
-      :escrow, :escrow_date, :merchant_profile_uid, :total_price, :shipping_costs, :products,
-      :partner_fee
+      :escrow, :escrow_date, :merchant_profile_uid, :total_price, :shipping_costs,
+      :products, :partner_fee, :issuer
 
     def self.api_url
       "transactions"
     end
 
+    def self.notify_url
+      OnlineBetaalPlatform.configuration.notify_url
+    end
 
     def initialize(attributes)
       @uid             = attributes['uid']
@@ -24,6 +27,7 @@ module OnlineBetaalPlatform
       @payment_flow    = attributes['payment_flow']
       @payment_details = attributes['payment_details']
       @amount          = attributes['amount']
+      @issuer          = attributes['issuer']
       @return_url      = attributes['return_url']
       @redirect_url    = attributes['redirect_url']
       @notify_url      = attributes['notify_url']
@@ -67,6 +71,14 @@ module OnlineBetaalPlatform
         amount: amount,
         message: message
       })
+    end
+
+    def self.create(attributes)
+      attributes[:notify_url] = notify_url
+      merchant_transcation = Request.post(api_url, attributes)
+
+      # Return the created merchant
+      new(merchant_transcation)
     end
   end
 end
