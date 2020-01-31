@@ -46,9 +46,8 @@ module OnlineBetaalPlatform
       new(merchant)
     end
 
-    def self.all(page = 1, per_page = 10)
-      # TODO: Handle pagination
-      merchants = Request.get(api_url, page, per_page)['data']
+    def self.all(page = 1, per_page = 10, filters = {})
+      merchants = Request.get(api_url, page, per_page, filters)['data']
       merchants.map { |attributes| new(attributes) }
     end
 

@@ -26,10 +26,15 @@ module OnlineBetaalPlatform
       Oj.load(response.body)
     end
 
-    def self.get(endpoint, page = 1, per_page = 10, status = nil)
+    def self.get(endpoint, page = 1, per_page = 10, filters = {})
       uri = URI.parse(OnlineBetaalPlatform.configuration.api_root_url + endpoint)
-      if status.present?
-        uri.query = URI.encode_www_form(perpage: per_page, page: page, 'filter[status]': status)
+      if filters.present?
+        filters_hash = filters.inject({}) do |h, (key, val)|
+          h["filter[#{key}]"] = val
+          h
+        end
+        filters_hash.merge!({ perpage: per_page, page: page })
+        uri.query = URI.encode_www_form(filters_hash)
       else
         uri.query = URI.encode_www_form(perpage: per_page, page: page)
       end
