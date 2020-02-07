@@ -69,9 +69,8 @@ module OnlineBetaalPlatform
 
     def bank_accounts
       # GET Request to /merchants/:merchant_uid/bank_accounts
-      bank_accounts = Request.get(
-        "#{OnlineBetaalPlatform::Merchant.api_url}/#{uid}/bank_accounts"
-      )['data']
+      url = "#{OnlineBetaalPlatform::Merchant.api_url}/#{uid}/bank_accounts"
+      bank_accounts = Request.get(url, 1, 100)['data']
       return [] if bank_accounts.empty?
 
       bank_accounts.map do |attributes|
