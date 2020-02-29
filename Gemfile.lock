@@ -26,7 +26,7 @@ GEM
     public_suffix (3.0.3)
     rack (2.0.8)
     rainbow (3.0.0)
-    rake (10.5.0)
+    rake (13.0.1)
     rubocop (0.67.2)
       jaro_winkler (~> 1.5.1)
       parallel (~> 1.10)
@@ -55,7 +55,7 @@ DEPENDENCIES
   dotenv (~> 2.7)
   minitest (~> 5.11)
   online_betaal_platform!
-  rake (~> 10.0)
+  rake (~> 13.0)
   rubocop (~> 0.67)
   rubocop-performance (~> 1.1)
   vcr (~> 4.0)
