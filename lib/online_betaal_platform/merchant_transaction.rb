@@ -62,8 +62,7 @@ module OnlineBetaalPlatform
     end
 
     def update_escrow(escrow_date)
-      merchant_transaction = Request.post(MerchantTransaction.api_url, {escrow_date: escrow_date})
-      new(multi_transcation)
+      Request.post(MerchantTransaction.api_url + "/#{uid}", {escrow_date: escrow_date})
     end
 
     def refund!(amount = self.amount, message = 'Transaction Refunded')
